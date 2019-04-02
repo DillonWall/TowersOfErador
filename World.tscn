@@ -11,7 +11,7 @@
 
 [node name="TileMapLayer0" parent="LB0" instance=ExtResource( 1 )]
 cell_size = Vector2( 16, 16 )
-tile_data = PoolIntArray( 393240, 40, 0 )
+tile_data = PoolIntArray( 393221, 40, 0, 393240, 40, 0 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
 position = Vector2( 176, 208 )
