@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://GrassTileMapL0.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://GrassTileMapL1.tscn" type="PackedScene" id=3]
+[ext_resource path="res://GrassTileMapL2.tscn" type="PackedScene" id=4]
+
+[node name="World" type="Node2D"]
+
+[node name="LB0" type="Node2D" parent="."]
+
+[node name="TileMapLayer0" parent="LB0" instance=ExtResource( 1 )]
+cell_size = Vector2( 16, 16 )
+tile_data = PoolIntArray( 393240, 40, 0 )
+
+[node name="Player" parent="." instance=ExtResource( 2 )]
+position = Vector2( 176, 208 )
+
+[node name="L0" type="Node2D" parent="."]
+
+[node name="TileMapLayer0" parent="L0" instance=ExtResource( 1 )]
+cell_size = Vector2( 16, 16 )
+tile_data = PoolIntArray( 393229, 536870952, 0 )
+
+[node name="L1" type="Node2D" parent="."]
+
+[node name="TileMapLayer1" parent="L1" instance=ExtResource( 3 )]
+cell_size = Vector2( 16, 16 )
+tile_data = PoolIntArray( 262146, 0, 0, 262147, 1, 0, 262148, 12, 0, 262149, 2, 0, 262150, 1, 0, 262151, 12, 0, 786440, 26, 0, 786442, 26, 1, 786444, 26, 2, 786451, 26, 1, 786453, 26, 2, 786455, 24, 0, 786457, 29, 0, 786462, 29, 0, 786464, 29, 1, 917512, 26, 65536, 917514, 26, 65537, 917534, 29, 65536, 917536, 29, 65537, 1048584, 26, 131072, 1048586, 26, 131073, 1048588, 26, 131074, 1048590, 26, 196610, 1048592, 26, 196610, 1048594, 26, 196610, 1048596, 26, 196610, 1048598, 26, 196610, 1048600, 26, 196610, 1048602, 26, 196610, 1048604, 26, 196610, 1048606, 29, 131072, 1048608, 29, 131073, 1179656, 26, 196608, 1179658, 26, 196609, 1179660, 26, 196610, 1179662, 26, 196610, 1179664, 26, 196610, 1179666, 26, 196610, 1179668, 26, 196610, 1179670, 26, 196610, 1179672, 26, 196610, 1179674, 26, 196610, 1179676, 26, 196610, 1179678, 29, 131072, 1179680, 29, 131073 )
+
+[node name="L2" type="Node2D" parent="."]
+
+[node name="TileMapLayer2" parent="L2" instance=ExtResource( 4 )]
+cell_size = Vector2( 16, 16 )
+tile_data = PoolIntArray( 851981, 536870964, 0, 851983, 51, 0, 851984, 58, 0, 851995, 51, 0, 851996, 52, 0, 917516, 61, 0, 917517, 61, 0, 917523, 61, 0, 917525, 61, 0, 917527, 61, 0, 917529, 61, 0, 917531, 61, 0, 983052, 62, 0, 983053, 62, 0, 983054, 62, 0, 983055, 62, 0, 983059, 62, 0, 983060, 62, 0, 983061, 62, 0, 983062, 62, 0, 983063, 62, 0, 983064, 62, 0, 983065, 62, 0, 983066, 62, 0, 983067, 62, 0, 983068, 62, 0, 983069, 62, 0 )
+
