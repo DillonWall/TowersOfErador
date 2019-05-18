@@ -1,16 +1,18 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Player.gd" type="Script" id=1]
 [ext_resource path="res://Game Assets/Sprites/Adventurer/v2.1/Indvidual Sprites/adventurer-idle-00-1.3.png" type="Texture" id=2]
 [ext_resource path="res://Game Assets/Sprites/Adventurer/v2.1/Indvidual Sprites/adventurer-idle-01-1.3.png" type="Texture" id=3]
-[ext_resource path="res://Game Assets/Sprites/Adventurer/v2.1/Indvidual Sprites/adventurer-run-00-1.3.png" type="Texture" id=4]
-[ext_resource path="res://Game Assets/Sprites/Adventurer/v2.1/Indvidual Sprites/adventurer-run-01-1.3.png" type="Texture" id=5]
-[ext_resource path="res://Game Assets/Sprites/Adventurer/v2.1/Indvidual Sprites/adventurer-run-02-1.3.png" type="Texture" id=6]
-[ext_resource path="res://Game Assets/Sprites/Adventurer/v2.1/Indvidual Sprites/adventurer-run-03-1.3.png" type="Texture" id=7]
-[ext_resource path="res://Game Assets/Sprites/Adventurer/v2.1/Indvidual Sprites/adventurer-run-04-1.3.png" type="Texture" id=8]
-[ext_resource path="res://Game Assets/Sprites/Adventurer/v2.1/Indvidual Sprites/adventurer-run-05-1.3.png" type="Texture" id=9]
-[ext_resource path="res://Game Assets/Sprites/Adventurer/v2.1/Indvidual Sprites/adventurer-jump-02-1.3.png" type="Texture" id=10]
-[ext_resource path="res://Game Assets/Sprites/Adventurer/v2.1/Indvidual Sprites/adventurer-jump-03-1.3.png" type="Texture" id=11]
+[ext_resource path="res://Game Assets/Sprites/Adventurer/v2.1/Indvidual Sprites/adventurer-jump-00-1.3.png" type="Texture" id=4]
+[ext_resource path="res://Game Assets/Sprites/Adventurer/v2.1/Indvidual Sprites/adventurer-jump-01-1.3.png" type="Texture" id=5]
+[ext_resource path="res://Game Assets/Sprites/Adventurer/v2.1/Indvidual Sprites/adventurer-jump-02-1.3.png" type="Texture" id=6]
+[ext_resource path="res://Game Assets/Sprites/Adventurer/v2.1/Indvidual Sprites/adventurer-run-00-1.3.png" type="Texture" id=7]
+[ext_resource path="res://Game Assets/Sprites/Adventurer/v2.1/Indvidual Sprites/adventurer-run-01-1.3.png" type="Texture" id=8]
+[ext_resource path="res://Game Assets/Sprites/Adventurer/v2.1/Indvidual Sprites/adventurer-run-02-1.3.png" type="Texture" id=9]
+[ext_resource path="res://Game Assets/Sprites/Adventurer/v2.1/Indvidual Sprites/adventurer-run-03-1.3.png" type="Texture" id=10]
+[ext_resource path="res://Game Assets/Sprites/Adventurer/v2.1/Indvidual Sprites/adventurer-run-04-1.3.png" type="Texture" id=11]
+[ext_resource path="res://Game Assets/Sprites/Adventurer/v2.1/Indvidual Sprites/adventurer-run-05-1.3.png" type="Texture" id=12]
+[ext_resource path="res://Game Assets/Sprites/Adventurer/v2.1/Indvidual Sprites/adventurer-jump-03-1.3.png" type="Texture" id=13]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -19,48 +21,47 @@ animations = [ {
 "name": "idle",
 "speed": 3.0
 }, {
-"frames": [ ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ) ],
+"frames": [ ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ) ],
+"loop": false,
+"name": "jump",
+"speed": 15.0
+}, {
+"frames": [ ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ) ],
 "loop": true,
 "name": "run",
-"speed": 5.0
+"speed": 8.0
 }, {
-"frames": [ ExtResource( 10 ) ],
-"loop": true,
-"name": "jump",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 11 ) ],
+"frames": [ ExtResource( 13 ) ],
 "loop": true,
 "name": "fall",
 "speed": 5.0
 } ]
 
-[sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 8, 14 )
+[sub_resource type="CapsuleShape2D" id=2]
+radius = 8.0
+height = 14.0
 
 [node name="Player" type="KinematicBody2D"]
+position = Vector2( 11.6337, -9.19876 )
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_group_": true
 }
-JUMP_HEIGHT = -350
 
 [node name="Sprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )
 animation = "idle"
-frame = 1
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0, 4 )
+position = Vector2( 0, 3 )
 shape = SubResource( 2 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 offset = Vector2( 0, -32 )
 current = true
-zoom = Vector2( 1.25, 1.25 )
+zoom = Vector2( 1.5, 1.5 )
 drag_margin_h_enabled = false
 drag_margin_v_enabled = false
-smoothing_enabled = true
 smoothing_speed = 2.0
 

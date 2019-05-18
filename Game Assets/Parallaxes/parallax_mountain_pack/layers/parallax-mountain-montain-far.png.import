@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/adventurer-jump-00-1.3.png-e00daaf6202463cbf6c17f45c73ad3c6.stex"
+path="res://.import/parallax-mountain-montain-far.png-957797aa7e95da5a9fa0ca2924e9881f.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Game Assets/Sprites/Adventurer/v2.1/Indvidual Sprites/adventurer-jump-00-1.3.png"
-dest_files=[ "res://.import/adventurer-jump-00-1.3.png-e00daaf6202463cbf6c17f45c73ad3c6.stex" ]
+source_file="res://Game Assets/Parallaxes/parallax_mountain_pack/layers/parallax-mountain-montain-far.png"
+dest_files=[ "res://.import/parallax-mountain-montain-far.png-957797aa7e95da5a9fa0ca2924e9881f.stex" ]
 
 [params]
 

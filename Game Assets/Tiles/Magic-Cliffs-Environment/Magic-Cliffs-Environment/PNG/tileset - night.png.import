@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/adventurer-jump-00-1.3.png-e00daaf6202463cbf6c17f45c73ad3c6.stex"
+path="res://.import/tileset - night.png-7af6380f23ac17aae1e63166fd807394.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Game Assets/Sprites/Adventurer/v2.1/Indvidual Sprites/adventurer-jump-00-1.3.png"
-dest_files=[ "res://.import/adventurer-jump-00-1.3.png-e00daaf6202463cbf6c17f45c73ad3c6.stex" ]
+source_file="res://Game Assets/Tiles/Magic-Cliffs-Environment/Magic-Cliffs-Environment/PNG/tileset - night.png"
+dest_files=[ "res://.import/tileset - night.png-7af6380f23ac17aae1e63166fd807394.stex" ]
 
 [params]
 

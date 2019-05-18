@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://WeatherParallax.gd" type="Script" id=1]
+[ext_resource path="res://WeatherShaders.tscn" type="PackedScene" id=2]
+
+
+[node name="Weather" type="ParallaxBackground"]
+script = ExtResource( 1 )
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="."]
+motion_mirroring = Vector2( 512, 512 )
+
+[node name="ParticleEffects" parent="ParallaxLayer" instance=ExtResource( 2 )]
+
