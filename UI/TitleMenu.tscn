@@ -1,0 +1,82 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Game Assets/UI/Fonts/m5x7.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Game Assets/UI/ButtonAnimation/ButtonAnimation1.png" type="Texture" id=2]
+[ext_resource path="res://UI/NewGameBtn_AnimatedTexture.tres" type="Texture" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+size = 60
+outline_size = 7
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 1 )
+
+[sub_resource type="Theme" id=2]
+default_font = SubResource( 1 )
+
+[node name="TitleMenuInterface" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Buttons" type="VBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -304.0
+margin_top = -200.0
+margin_right = 303.0
+alignment = 1
+
+[node name="Label" type="Label" parent="Buttons"]
+margin_top = 4.0
+margin_right = 607.0
+margin_bottom = 52.0
+theme = SubResource( 2 )
+text = "Towers of Erador"
+align = 1
+valign = 1
+
+[node name="NewGame_Button" type="TextureButton" parent="Buttons"]
+margin_top = 56.0
+margin_right = 607.0
+margin_bottom = 88.0
+rect_min_size = Vector2( 0, 32 )
+texture_normal = ExtResource( 2 )
+texture_pressed = ExtResource( 3 )
+texture_hover = ExtResource( 3 )
+expand = true
+stretch_mode = 3
+
+[node name="Load_Button" type="TextureButton" parent="Buttons"]
+margin_top = 92.0
+margin_right = 607.0
+margin_bottom = 124.0
+rect_min_size = Vector2( 0, 32 )
+texture_normal = ExtResource( 2 )
+texture_pressed = ExtResource( 3 )
+texture_hover = ExtResource( 3 )
+expand = true
+stretch_mode = 3
+
+[node name="Options_Button" type="TextureButton" parent="Buttons"]
+margin_top = 128.0
+margin_right = 607.0
+margin_bottom = 160.0
+rect_min_size = Vector2( 0, 32 )
+texture_normal = ExtResource( 2 )
+texture_pressed = ExtResource( 3 )
+texture_hover = ExtResource( 3 )
+expand = true
+stretch_mode = 3
+
+[node name="Exit_Button" type="TextureButton" parent="Buttons"]
+margin_top = 164.0
+margin_right = 607.0
+margin_bottom = 196.0
+rect_min_size = Vector2( 0, 32 )
+texture_normal = ExtResource( 2 )
+texture_pressed = ExtResource( 3 )
+texture_hover = ExtResource( 3 )
+expand = true
+stretch_mode = 3
+

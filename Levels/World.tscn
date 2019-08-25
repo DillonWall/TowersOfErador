@@ -1,0 +1,241 @@
+[gd_scene load_steps=40 format=2]
+
+[ext_resource path="res://GlobalScripts/World.gd" type="Script" id=1]
+[ext_resource path="res://ParallaxAndShaders/MountainParallax.tscn" type="PackedScene" id=2]
+[ext_resource path="res://UI/InGame HUD.tscn" type="PackedScene" id=3]
+[ext_resource path="res://TileMaps/GrassTileMapL0.tscn" type="PackedScene" id=4]
+[ext_resource path="res://GlobalScripts/Grapple.gd" type="Script" id=5]
+[ext_resource path="res://Game Assets/Sprites/Custom/Rope.png" type="Texture" id=6]
+[ext_resource path="res://Game Assets/Sprites/Custom/Anchor.png" type="Texture" id=7]
+[ext_resource path="res://Player.tscn" type="PackedScene" id=8]
+[ext_resource path="res://MonsterList.gd" type="Script" id=9]
+[ext_resource path="res://Monster.gd" type="Script" id=10]
+[ext_resource path="res://Slime.gd" type="Script" id=11]
+[ext_resource path="res://Game Assets/Sprites/Slime/Individual Sprites/slime-idle-0.png" type="Texture" id=12]
+[ext_resource path="res://Game Assets/Sprites/Slime/Individual Sprites/slime-idle-1.png" type="Texture" id=13]
+[ext_resource path="res://Game Assets/Sprites/Slime/Individual Sprites/slime-idle-2.png" type="Texture" id=14]
+[ext_resource path="res://Game Assets/Sprites/Slime/Individual Sprites/slime-idle-3.png" type="Texture" id=15]
+[ext_resource path="res://Game Assets/Sprites/Slime/Individual Sprites/slime-attack-0.png" type="Texture" id=16]
+[ext_resource path="res://Game Assets/Sprites/Slime/Individual Sprites/slime-attack-1.png" type="Texture" id=17]
+[ext_resource path="res://Game Assets/Sprites/Slime/Individual Sprites/slime-attack-2.png" type="Texture" id=18]
+[ext_resource path="res://Game Assets/Sprites/Slime/Individual Sprites/slime-attack-3.png" type="Texture" id=19]
+[ext_resource path="res://Game Assets/Sprites/Slime/Individual Sprites/slime-attack-4.png" type="Texture" id=20]
+[ext_resource path="res://Game Assets/Sprites/Slime/Individual Sprites/slime-move-0.png" type="Texture" id=21]
+[ext_resource path="res://Game Assets/Sprites/Slime/Individual Sprites/slime-move-1.png" type="Texture" id=22]
+[ext_resource path="res://Game Assets/Sprites/Slime/Individual Sprites/slime-move-2.png" type="Texture" id=23]
+[ext_resource path="res://Game Assets/Sprites/Slime/Individual Sprites/slime-move-3.png" type="Texture" id=24]
+[ext_resource path="res://Game Assets/Sprites/Slime/Individual Sprites/slime-hurt-0.png" type="Texture" id=25]
+[ext_resource path="res://Game Assets/Sprites/Slime/Individual Sprites/slime-hurt-1.png" type="Texture" id=26]
+[ext_resource path="res://Game Assets/Sprites/Slime/Individual Sprites/slime-hurt-2.png" type="Texture" id=27]
+[ext_resource path="res://Game Assets/Sprites/Slime/Individual Sprites/slime-hurt-3.png" type="Texture" id=28]
+[ext_resource path="res://Game Assets/Sprites/Slime/Individual Sprites/slime-die-0.png" type="Texture" id=29]
+[ext_resource path="res://Game Assets/Sprites/Slime/Individual Sprites/slime-die-1.png" type="Texture" id=30]
+[ext_resource path="res://Game Assets/Sprites/Slime/Individual Sprites/slime-die-2.png" type="Texture" id=31]
+[ext_resource path="res://Game Assets/Sprites/Slime/Individual Sprites/slime-die-3.png" type="Texture" id=32]
+[ext_resource path="res://TileMaps/GrassTileMapL1.tscn" type="PackedScene" id=33]
+[ext_resource path="res://TileMaps/GrassTileMapL2.tscn" type="PackedScene" id=34]
+[ext_resource path="res://ParallaxAndShaders/WeatherShaders.tscn" type="PackedScene" id=35]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 2, 80 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 4, 6 )
+
+[sub_resource type="SpriteFrames" id=3]
+animations = [ {
+"frames": [ ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ) ],
+"loop": true,
+"name": "idle",
+"speed": 7.0
+}, {
+"frames": [  ],
+"loop": false,
+"name": "jump",
+"speed": 15.0
+}, {
+"frames": [ ExtResource( 16 ), ExtResource( 17 ), ExtResource( 18 ), ExtResource( 19 ), ExtResource( 20 ) ],
+"loop": false,
+"name": "attack",
+"speed": 7.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "fall",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 21 ), ExtResource( 22 ), ExtResource( 23 ), ExtResource( 24 ) ],
+"loop": true,
+"name": "run",
+"speed": 7.0
+}, {
+"frames": [ ExtResource( 25 ), ExtResource( 26 ), ExtResource( 27 ), ExtResource( 28 ) ],
+"loop": false,
+"name": "hurt",
+"speed": 7.0
+}, {
+"frames": [ ExtResource( 29 ), ExtResource( 30 ), ExtResource( 31 ), ExtResource( 32 ) ],
+"loop": false,
+"name": "die",
+"speed": 7.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 12, 7 )
+
+[node name="World" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="MountainParallax" parent="." instance=ExtResource( 2 )]
+
+[node name="HUDCanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="InGame HUD" parent="HUDCanvasLayer" instance=ExtResource( 3 )]
+mouse_filter = 2
+
+[node name="HPMPBase" parent="HUDCanvasLayer/InGame HUD" index="0"]
+mouse_filter = 2
+
+[node name="HPBar" parent="HUDCanvasLayer/InGame HUD" index="1"]
+mouse_filter = 2
+
+[node name="HPSegment" parent="HUDCanvasLayer/InGame HUD/HPBar" index="0"]
+mouse_filter = 2
+
+[node name="HPFilledSegment" parent="HUDCanvasLayer/InGame HUD/HPBar/HPSegment" index="0"]
+mouse_filter = 2
+
+[node name="MPBar" parent="HUDCanvasLayer/InGame HUD" index="2"]
+mouse_filter = 2
+
+[node name="MPSegment" parent="HUDCanvasLayer/InGame HUD/MPBar" index="0"]
+mouse_filter = 2
+
+[node name="MPFilledSegment" parent="HUDCanvasLayer/InGame HUD/MPBar/MPSegment" index="0"]
+mouse_filter = 2
+
+[node name="Ability" parent="HUDCanvasLayer/InGame HUD" index="3"]
+mouse_filter = 2
+
+[node name="Background" parent="HUDCanvasLayer/InGame HUD/Ability" index="0"]
+mouse_filter = 2
+
+[node name="Icon" parent="HUDCanvasLayer/InGame HUD/Ability" index="1"]
+mouse_filter = 2
+
+[node name="CooldownBar" parent="HUDCanvasLayer/InGame HUD/Ability" index="2"]
+mouse_filter = 2
+
+[node name="Background Tilesets" type="Node2D" parent="."]
+editor/display_folded = true
+
+[node name="LB0" type="Node2D" parent="Background Tilesets"]
+
+[node name="TileMapLayer0" parent="Background Tilesets/LB0" instance=ExtResource( 4 )]
+tile_data = PoolIntArray( 262117, 52, 0, 393230, 536870952, 0, 524173, 51, 0, 524190, 51, 0, 720760, 51, 0, 720816, 53, 0 )
+
+[node name="Grapple" type="Sprite" parent="."]
+editor/display_folded = true
+script = ExtResource( 5 )
+
+[node name="Rope" type="KinematicBody2D" parent="Grapple"]
+
+[node name="Sprite" type="Sprite" parent="Grapple/Rope"]
+visible = false
+texture = ExtResource( 6 )
+region_enabled = true
+region_rect = Rect2( 6, 0, 4, 0 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Grapple/Rope"]
+shape = SubResource( 1 )
+disabled = true
+
+[node name="Anchor" type="KinematicBody2D" parent="Grapple"]
+collision_layer = 2
+
+[node name="Sprite" type="Sprite" parent="Grapple/Anchor"]
+visible = false
+texture = ExtResource( 7 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Grapple/Anchor"]
+shape = SubResource( 2 )
+
+[node name="Player" parent="." instance=ExtResource( 8 )]
+position = Vector2( 384, 206.097 )
+collision_layer = 2
+
+[node name="Sprite" parent="Player" index="0"]
+frame = 1
+
+[node name="MonsterList" type="Node2D" parent="."]
+script = ExtResource( 9 )
+
+[node name="Monster_Slime" type="Node2D" parent="MonsterList"]
+script = ExtResource( 10 )
+
+[node name="KinematicBody2D" type="KinematicBody2D" parent="MonsterList/Monster_Slime"]
+position = Vector2( 500, 210 )
+collision_layer = 2
+script = ExtResource( 11 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="AnimatedSprite" parent="MonsterList/Monster_Slime/KinematicBody2D"]
+frames = SubResource( 3 )
+animation = "idle"
+frame = 3
+playing = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MonsterList/Monster_Slime/KinematicBody2D"]
+position = Vector2( 0, 5 )
+shape = SubResource( 4 )
+
+[node name="PatrolPath" type="Line2D" parent="MonsterList/Monster_Slime"]
+points = PoolVector2Array( 500, 210, 150, 210 )
+width = 2.0
+default_color = Color( 1, 0, 0.0235294, 1 )
+texture_mode = 0
+
+[node name="Navigation2D" type="Navigation2D" parent="."]
+editor/display_folded = true
+
+[node name="Foreground Tilesets" type="Node2D" parent="Navigation2D"]
+
+[node name="L0" type="Node2D" parent="Navigation2D/Foreground Tilesets"]
+
+[node name="TileMapLayer0" parent="Navigation2D/Foreground Tilesets/L0" instance=ExtResource( 4 )]
+tile_data = PoolIntArray( 393221, 40, 0, 393239, 40, 0 )
+
+[node name="L1" type="Node2D" parent="Navigation2D/Foreground Tilesets"]
+
+[node name="TileMapLayer1" parent="Navigation2D/Foreground Tilesets/L1" instance=ExtResource( 33 )]
+tile_data = PoolIntArray( -65540, 36, 0, -65538, 36, 0, -131072, 36, 0, -131070, 36, 0, -131068, 36, 0, -131066, 36, 0, -131064, 36, 0, -131062, 36, 0, -131060, 36, 0, -131058, 36, 0, -131056, 36, 0, -131054, 36, 0, -131052, 36, 0, -131050, 36, 0, -131048, 36, 0, -131046, 36, 0, -131044, 36, 0, -131042, 36, 0, -131040, 36, 0, 524275, 44, 0, 524277, 53, 1, 524283, 50, 0, 524285, 50, 1, 655355, 50, 65536, 655357, 50, 65537, 720873, 53, 0, 720875, 53, 1, 720877, 53, 2, 786427, 50, 131072, 786429, 50, 131073, 851945, 53, 65536, 851947, 53, 65537, 851949, 53, 65538, 851951, 53, 196609, 786440, 26, 0, 786442, 26, 1, 786444, 26, 2, 786446, 26, 1, 786448, 24, 0, 786450, 39, 0, 786456, 33, 0, 786462, 29, 0, 786464, 29, 1, 917499, 52, 65536, 917501, 52, 65537, 983017, 53, 131072, 983019, 53, 131073, 983021, 53, 131074, 917512, 26, 65536, 917514, 26, 65537, 917516, 26, 65538, 917522, 38, 0, 917534, 29, 65536, 917536, 29, 65537, 1048562, 52, 131072, 1048567, 536870964, 131072, 1048571, 52, 131072, 1048573, 52, 131073, 1114089, 51, 131072, 1114091, 51, 131073, 1114092, 52, 131072, 1048584, 26, 131072, 1048586, 26, 131073, 1048588, 26, 131074, 1048590, 26, 196610, 1048592, 26, 196610, 1048594, 26, 196610, 1048598, 26, 196610, 1048600, 26, 196610, 1048602, 26, 196610, 1048604, 26, 196610, 1048606, 29, 131072, 1048608, 29, 131073, 1179634, 52, 196608, 1179640, 52, 196608, 1179641, 51, 196609, 1179643, 52, 196608, 1245163, 51, 196609, 1179656, 26, 196608, 1179658, 26, 196609, 1179660, 26, 196610, 1179662, 26, 196610, 1179664, 26, 196610, 1179666, 26, 196610, 1179668, 26, 196610, 1179670, 26, 196610, 1179672, 26, 196610, 1179674, 26, 196610, 1179676, 26, 196610, 1179678, 29, 131072, 1179680, 29, 131073 )
+
+[node name="L2" type="Node2D" parent="Navigation2D/Foreground Tilesets"]
+
+[node name="TileMapLayer2" parent="Navigation2D/Foreground Tilesets/L2" instance=ExtResource( 34 )]
+tile_data = PoolIntArray( 262116, 64, 0, 196645, 60, 0, 524173, 63, 0, 524189, 63, 0, 589810, 536870983, 0, 589815, 72, 0, 589816, 68, 0, 655340, 58, 0, 655343, 81, 0, 655347, 53, 0, 720760, 63, 0, 720817, 65, 0, 720845, 46, 0, 720848, 61, 0, 720850, 61, 0, 720852, 61, 0, 720854, 61, 0, 720856, 61, 0, 720858, 61, 0, 720860, 61, 0, 720862, 61, 0, 720864, 61, 0, 720866, 61, 0, 720868, 61, 0, 720870, 61, 0, 720872, 61, 0, 720874, 61, 0, 720879, 61, 0, 720881, 61, 0, 720883, 536870978, 0, 720884, 536870978, 0, 720885, 53, 0, 720886, 536870978, 0, 720887, 536870978, 0, 786400, 62, 0, 786401, 62, 0, 786402, 62, 0, 786403, 62, 0, 786404, 62, 0, 786405, 62, 0, 786406, 62, 0, 786407, 62, 0, 786408, 62, 0, 786409, 62, 0, 786410, 62, 0, 786411, 62, 0, 786414, 77, 0, 786415, 62, 0, 786416, 62, 0, 786417, 62, 0, 786418, 62, 0, 786419, 536870978, 0, 786420, 536870978, 0, 786421, 67, 0, 786423, 53, 0, 786424, 536870978, 0, 786425, 69, 0, 851955, 62, 0, 851956, 62, 0, 851959, 536870978, 0, 851960, 536870978, 0, 851961, 53, 0, 917450, 46, 0, 917486, 86, 65537, 917487, 86, 65537, 917488, 86, 0, 917489, 86, 0, 917490, 86, 0, 917491, 55, 0, 917492, 86, 0, 917493, 86, 0, 917494, 86, 0, 917495, 86, 0, 917499, 78, 0, 917500, 536870956, 0, 917503, 536870957, 0, 851969, 536870957, 0, 851971, 536870957, 0, 851973, 536870957, 0, 851975, 80, 0, 851976, 536870955, 0, 852010, 59, 0, 982918, 46, 0, 982921, 61, 0, 982923, 61, 0, 982925, 61, 0, 982927, 61, 0, 982929, 61, 0, 982931, 61, 0, 982933, 61, 0, 982935, 61, 0, 982937, 61, 0, 982939, 61, 0, 982941, 61, 0, 982943, 61, 0, 982945, 61, 0, 982947, 61, 0, 982949, 61, 0, 982951, 61, 0, 982953, 47, 0, 983031, 62, 0, 983032, 62, 0, 983035, 61, 0, 917518, 61, 0, 917520, 61, 0, 917524, 61, 0, 917526, 61, 0, 917528, 61, 0, 917530, 61, 0, 917532, 61, 0, 1048508, 54, 0, 1048557, 86, 131072, 1048558, 86, 131073, 1048559, 86, 131073, 1048560, 86, 131072, 1048563, 86, 196608, 1048564, 86, 196609, 1048565, 86, 196608, 1048568, 86, 0, 1048569, 86, 0, 983054, 62, 0, 983055, 62, 0, 983056, 62, 0, 983057, 62, 0, 983060, 62, 0, 983061, 62, 0, 983062, 62, 0, 983063, 62, 0, 983064, 62, 0, 983065, 62, 0, 983066, 62, 0, 983067, 62, 0, 983068, 62, 0, 983069, 62, 0, 1114046, 61, 0, 1114048, 61, 0, 1114050, 61, 0, 1114052, 61, 0, 1114054, 61, 0, 1114056, 61, 0, 1048596, 57, 0, 1179508, 61, 0, 1179510, 61, 0, 1179512, 61, 0, 1179514, 61, 0, 1179516, 61, 0, 1179518, 61, 0, 1179520, 61, 0, 1179522, 61, 0, 1179524, 61, 0, 1179564, 61, 0, 1179566, 61, 0, 1179568, 61, 0, 1179570, 61, 0, 1179572, 61, 0, 1179574, 61, 0, 1179576, 61, 0, 1179578, 61, 0, 1179629, 86, 196608, 1179630, 86, 196609, 1179631, 86, 196609, 1179632, 86, 196608 )
+
+[node name="WeatherShaders" parent="." instance=ExtResource( 35 )]
+editor/display_folded = true
+visible = false
+ENABLE_FOG = true
+ENABLE_SNOW = true
+
+[node name="WeatherShadersSunset" parent="." instance=ExtResource( 35 )]
+editor/display_folded = true
+visible = false
+ENABLE_FOG = true
+
+[node name="Snow" parent="WeatherShadersSunset" index="1"]
+visible = false
+
+
+[editable path="HUDCanvasLayer/InGame HUD"]
+
+[editable path="Player"]
+
+[editable path="WeatherShaders"]
+
+[editable path="WeatherShadersSunset"]
